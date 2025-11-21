@@ -1,6 +1,25 @@
+const User = require("../model/userModel");
+
 const loginHandler = (req, res) => {
 }
-const registerHandler = (req, res) => {
+const registerHandler = async (req, res) => {
+    // 1
+    const { name, age, email, password, role } = req.body;
+    // 3
+    const data = new User({
+        name: name,
+        age: age,
+        email: email,
+        password: password,
+        role: role,
+    })
+    const savedUser = await data.save();
+    // 4
+    res.json({
+        success: true,
+        data: savedUser
+    })
+
 }
 const logoutHandler = (req, res) => {
 }
