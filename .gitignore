@@ -1,0 +1,6 @@
+node_modules
+.env
+.vscode
+.qodo
+.claude
+.env.local
