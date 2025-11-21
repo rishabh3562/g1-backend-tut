@@ -7,7 +7,7 @@ const authRouter = require('./routes/authRoutes');
 
 app.use(express.json());
 app.use("/api/v1/user", userRouter);
-app.use("/api/v1/auht",authRouter)
+app.use("/api/v1/auth",authRouter)
 
 app.listen(8000, () => {
     connectDB();
