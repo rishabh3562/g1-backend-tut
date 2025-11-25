@@ -12,13 +12,20 @@ const loginHandler = async (req, res) => {
     }
 
     //user exists or not 
-    let user = await User.findOne({
-        email
-    })
+    let user = await User.findOne({ email })
     if (!user) {
         return res.json({
             success: false,
-            message: "user does not exists"
+            message: "user does not exist"
+        })
+    }
+
+    // password matches or not
+    let isMatch = await user.comparePasswords(password);
+    if(!isMatch){
+        return res.json({
+            success: false,
+            message: "invlaid credentials"
         })
     }
 }
