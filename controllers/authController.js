@@ -22,12 +22,17 @@ const loginHandler = async (req, res) => {
 
     // password matches or not
     let isMatch = await user.comparePasswords(password);
-    if(!isMatch){
+    if (!isMatch) {
         return res.json({
             success: false,
             message: "invlaid credentials"
         })
     }
+
+
+    // jwt issue
+    let payload = { _id: user._id, role: user.role };
+    let token = generateToken(payload);
 }
 const registerHandler = async (req, res) => {
     try {
