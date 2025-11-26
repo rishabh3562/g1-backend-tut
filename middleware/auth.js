@@ -11,7 +11,7 @@ const protect = async (req, res, next) => {
     // token exists or not
     let token;
     if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-        token = req.header.authorization.split(" ")[1] // ["Bearer"," dhfkdasfbakjsdbfadsf"]
+        token = req.headers.authorization.split(" ")[1] // ["Bearer"," dhfkdasfbakjsdbfadsf"]
     }
 
     // if token exists then proceed
@@ -43,12 +43,12 @@ const protect = async (req, res, next) => {
         req.user = user;
         next();
     } catch (error) {
-        res.json({
+        return res.json({
             success: false,
             message: error.message
         })
     }
 
-  
+
 }
 module.exports = { generateToken, protect };
