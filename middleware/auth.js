@@ -4,5 +4,7 @@ const generateToken = (payload) => {
     return token
 }
 
-
-module.exports = { generateToken };
+const protect = (req, res, next) => {
+    console.log("=====protect middleware=====")
+}
+module.exports = { generateToken, protect };
